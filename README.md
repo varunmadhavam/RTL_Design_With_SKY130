@@ -35,5 +35,6 @@ Logic sysnthesis is the process of translating your RTL Desing, which is the beh
 * Kunal Gosh, Co-Founder (VSD Corp. Pvt Ltd)
 * Shon Taware, Teaching Assistant (VSD Corp. Pvt Ltd)
 
-# references
-1. http://verificationexcellence.in/vlsi-design-front-end-and-back-end/
+# References
+1. https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/
+2. http://verificationexcellence.in/vlsi-design-front-end-and-back-end/
