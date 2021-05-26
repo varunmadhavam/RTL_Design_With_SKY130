@@ -13,6 +13,8 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
 
 
 # Introduction
-The below represent a generic ASIC flow
+The below represent a generic ASIC flow.
+
 ![](/src/img/asic-flow.png)
+
 The workshop intends to cover in detail the step marked in red, that is **logic synthesis**
