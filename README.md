@@ -1,1 +1,1 @@
-# RTL_Design_With_SKY130
+# RTL design using Verilog with SKY130 Technology
