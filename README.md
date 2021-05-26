@@ -9,7 +9,7 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
 1. [Introduction](#introduction)
 2. [Day1 - Introduction to Verilog RTL Design and Synthesis]()
 3. 
-4.
+4. 
 5. [Acknowledgemnts]
 6. [References]
 
@@ -22,7 +22,9 @@ The below represent a generic ASIC flow.
 The workshop intends to cover in detail the step marked in red, that is **logic synthesis**
 
 ## What is logic synthesis .!?
-Logic sysnthesis is the process of translating the a RTL Desing, which is the behavioral represntation of a specifications, usaully written in some HDL language like verilog, to a gate level netlist. The netlist contains a set of gates and connections between them as per the description. ......
+Logic sysnthesis is the process of translating your RTL Desing, which is the behavioral represntation of some specifications, usaully written in a HDL language like verilog, to a gate level netlist. The netlist contains a set of gates and connections between them as per the description. ......
+
+## Why is it important .!?
 
 # Day1 - Introduction to Verilog RTL Design and Synthesis
 1. Setting Up the Lab.
