@@ -7,11 +7,14 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
 # Table of Contents
 
 1. [Introduction](#introduction)
-2. [Day1 - Introduction to Verilog RTL Design and Synthesis]()
-3. 
-4. [FAQs]
-5. [Acknowledgemnts]
-6. [References]
+2. [Day1 - Introduction to Verilog RTL Design and Synthesis](#day1---introduction-to-verilog-rtl-design-and-synthesis)
+3. [Day2]
+4. [Day3]
+5. [Day4]
+6. [Day5]
+7. [FAQs](#faqs)
+8. [Acknowledgemnts](#acknowledgements)
+9. [References](#references)
 
 
 # Introduction
