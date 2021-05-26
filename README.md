@@ -9,7 +9,7 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
 1. [Introduction](#introduction)
 2. [Day1 - Introduction to Verilog RTL Design and Synthesis]()
 3. 
-4. 
+4. [FAQs]
 5. [Acknowledgemnts]
 6. [References]
 
@@ -29,6 +29,13 @@ Logic sysnthesis is the process of translating your RTL Desing, which is the beh
 # Day1 - Introduction to Verilog RTL Design and Synthesis
 1. Setting Up the Lab.
     - Login to your lab instance and in our home directory create a directory named VLSI.
+
+# FAQs
+1.  What is the significance of -lib while importing liberty file in yosys
+    -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
+
+2. yosys produces different implemnetations for the same circuit and standard libary file
+    - This would mostly be because of difference in the versions of yosys that you are running. Different versions might be optimised for different areas of optimisations like power, performance or area. Also later version might have improvments in algorithms that might help it to choose a better standard cell for the same design.
     
 # Acknowledgements
 
