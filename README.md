@@ -25,16 +25,21 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 
 ## Synthesis Steps
   1. Translation.
+
      In this step, the input hdl files are processed and the constructs in them are interpreted as various logical structures. An example would be an if-else statement might infer a MUX and so on. Contraints and optimisation are not taken into account in this stage.
   2. Optimisation.
+
      In this step, various techniques are used to optimize and minimise the logic and remove redundant logic.
   3. Mapping
+  
      In this step, the desing is mapped to the desired target technology, based on the standard cell library. This implimentation also takes into account the design contraints given as inputs like power,area and timing and tries to satisfy them.
 
 ## Inputs to the Synthesis Process
   1. RTL Description.
+
      These are your HDL source files which contains a behavioral description of the specifications of the design.
   2. The standard cell library.
+
      The library file contains a collection of cells that are proivded by the foundary. These includes basic logic gates like inverters, and gates, or gates etc as well as macrocells like multiplexers, flip flops etc. Each cell has an associated description which contains detailed  information regarding its functionality, timing , power and area in a format which is readable by the synthesis tool.
   3. Contraints.
      
