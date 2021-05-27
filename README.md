@@ -37,6 +37,13 @@ Logic sysnthesis is the process of translating your RTL Desing, which is the beh
       cd ~
       mkdir VLSI
       ```
+    - Clone the github repos.
+      ![](/src/img/clone.png)
+      ``` 
+      git clone https://github.com/kunalg123/vsdflow.git
+      git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+      ```
+      
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
