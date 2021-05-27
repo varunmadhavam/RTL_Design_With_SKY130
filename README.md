@@ -43,12 +43,14 @@ Logic sysnthesis is the process of translating your RTL Desing, which is the beh
       git clone https://github.com/kunalg123/vsdflow.git
       git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
       ```
-    - Go to the newly created vsdflow directory and execute the command ./opensource_eda_tool_install.sh . This will begin the installation of the various tools required for this workshop.
+    - Go to the newly created vsdflow directory and execute the command ./opensource_eda_tool_install.sh . This will begin the installation of the various tools required for this workshop.(Note. The tools would have been alredy installed on the lab machines and this step is not necessary)
       ![](/src/img/vsdinstall1.png)
       ``` 
-      /home/varun/VLSI/vsdflow
+      cd /home/varun/VLSI/vsdflow
       ./opensource_eda_tool_install.sh
       ```
+    - Directory Structure of sky130RTLDesignAndSynthesisWorkshop
+      ![](/src/img/ds.png)
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
