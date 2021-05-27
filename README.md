@@ -31,7 +31,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
   3. **Mapping** : 
      In this step, the desing is mapped to the desired target technology, based on the standard cell library. This implimentation also takes into account the design contraints given as inputs like power,area and timing and tries to satisfy them.
 
-## Inputs to the Synthesis Process
+## Inputs To The Synthesis Process
   1. **RTL Description** :
      These are your HDL source files which contains a behavioral description of the specifications of the design.
   2. **The Standard Cell Library** :
@@ -80,4 +80,3 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 
 # References
 1. https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/
-2. http://verificationexcellence.in/vlsi-design-front-end-and-back-end/
