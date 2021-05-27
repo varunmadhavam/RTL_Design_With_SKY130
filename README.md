@@ -36,8 +36,8 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
      These are your HDL source files which contains a behavioral description of the specifications of the design.
   2. The standard cell library :
      The library file contains a collection of cells that are proivded by the foundary. These includes basic logic gates like inverters, and gates, or gates etc as well as macrocells like multiplexers, flip flops etc. Each cell has an associated description which contains detailed  information regarding its functionality, timing , power and area in a format which is readable by the synthesis tool.
-  3. Contraints.
-     
+  3. Contraints : 
+     These contains guidelines to the synthesiser on how to optimise the desing. Based on the contraints, the synthesiser can choose different flavours from the standard cell to implement the same logic while trying to satisfy the various design contraints. The contraints typically includes timing requirements, area restrictions and power limitations.
      
 
 ## Why is it important .!?
@@ -56,7 +56,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       git clone https://github.com/kunalg123/vsdflow.git
       git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
       ```
-    - Go to the newly created vsdflow directory and execute the command ./opensource_eda_tool_install.sh . This will begin the installation of the various tools required for this workshop.(Note. The tools would have been alredy installed on the lab machines and this step is not necessary)
+    - Go to the newly created vsdflow directory and execute the command ./opensource_eda_tool_install.sh . This will begin the installation of the various tools required for this workshop.(**Note. The tools would have been alredy installed on the lab machines and this step is not necessary**)
       ![](/src/img/vsdinstall1.png)
       ``` 
       cd /home/varun/VLSI/vsdflow
