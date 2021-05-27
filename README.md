@@ -18,14 +18,10 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
 
 
 # Introduction
-The below represent a generic ASIC flow.
-
-![](/src/img/asic-flow.png)
-
-The workshop intends to cover in detail the step marked in red, that is **logic synthesis**
 
 ## What is logic synthesis .!?
-Logic sysnthesis is the process of translating your RTL Desing, which is the behavioral represntation of some specifications, usaully written in a HDL language like verilog, to a gate level netlist. The netlist contains a set of gates and connections between them as per the description. ......
+Logic sysnthesis is the process of translating your RTL Desing, which is the behavioral represntation of some specifications, usaully written in a HDL language like verilog, to a gate level netlist. The netlist contains a set of gates and connections between them as per the description.
+![](/src/img/synth.png)
 
 ## Why is it important .!?
 
@@ -49,7 +45,7 @@ Logic sysnthesis is the process of translating your RTL Desing, which is the beh
       cd /home/varun/VLSI/vsdflow
       ./opensource_eda_tool_install.sh
       ```
-    - Directory Structure of sky130RTLDesignAndSynthesisWorkshop
+    - Directory Structure of sky130RTLDesignAndSynthesisWorkshop directory
       ![](/src/img/ds.png)
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
