@@ -32,7 +32,9 @@ Logic sysnthesis is the process of translating your RTL Desing, which is the beh
 # Day1 - Introduction to Verilog RTL Design and Synthesis
 1. Setting Up the Lab.
     - Login to your lab instance and in our home directory create a directory named VLSI.
-      - ``` cd ~
+      - 
+        ``` 
+            cd ~
             mkdir VLSI
         ```
       - ![](/src/img/mkdir.png)
