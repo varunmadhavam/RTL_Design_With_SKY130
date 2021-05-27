@@ -66,6 +66,16 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       ```
     - Directory Structure of sky130RTLDesignAndSynthesisWorkshop directory
       ![](/src/img/ds.png)
+2. ### Simulating the Designs with iverilog
+  - **what is simulation !?**
+    Simulation is the process of checking whether the desing is adhering to the given specs. The tool used for simulating the design is called a simulator.
+  - **How does a simulator work**
+    Simulator works by continiously monitoring the inputs for changes. Upon a change in any one of the inputs, the outputs are re evaluated. The changes to the inputs and corresponding changes to the output can be logged in a file for later analysis.
+  - **Inputs to the simulator**
+    The simulator accepts two main inputs.
+      1. The Desing : This is usaully the behavioral description of the specs in some HDL language.
+      2. The Testbench : The testbench is a setup to apply stimulas or test vectors to the design to check its functionality and correctness.
+
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
