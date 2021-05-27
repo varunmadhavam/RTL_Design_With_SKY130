@@ -39,7 +39,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
   3. **Contraints** : 
      These contains guidelines to the synthesiser on how to optimise the desing. Based on the contraints, the synthesiser can choose different flavours from the standard cell to implement the same logic while trying to satisfy the various design contraints. The contraints typically includes timing requirements, area restrictions and power limitations.
 ## Output Of The Synthesis Process
-    The output of the systhesis process is a optimised gate-level netlist mapped to the given target technology cells. 
+     The output of the systhesis process is a optimised gate-level netlist mapped to the given target technology cells. 
 
 ## Why is it important .!?
     **TBD**
