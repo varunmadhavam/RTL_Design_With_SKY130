@@ -24,21 +24,22 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 ![](/src/img/synth.png)
 
 ## Synthesis Steps
-  1. Translation : 
+  1. **Translation** : 
      In this step, the input hdl files are processed and the constructs in them are interpreted as various logical structures. An example would be an if-else statement might infer a MUX and so on. Contraints and optimisation are not taken into account in this stage.
-  2. Optimisation : 
+  2. **Optimisation** : 
      In this step, various techniques are used to optimize and minimise the logic and remove redundant logic.
-  3. Mapping : 
+  3. **Mapping** : 
      In this step, the desing is mapped to the desired target technology, based on the standard cell library. This implimentation also takes into account the design contraints given as inputs like power,area and timing and tries to satisfy them.
 
 ## Inputs to the Synthesis Process
-  1. RTL Description :
+  1. **RTL Description** :
      These are your HDL source files which contains a behavioral description of the specifications of the design.
-  2. The standard cell library :
+  2. **The Standard Cell Library** :
      The library file contains a collection of cells that are proivded by the foundary. These includes basic logic gates like inverters, and gates, or gates etc as well as macrocells like multiplexers, flip flops etc. Each cell has an associated description which contains detailed  information regarding its functionality, timing , power and area in a format which is readable by the synthesis tool.
-  3. Contraints : 
+  3. **Contraints** : 
      These contains guidelines to the synthesiser on how to optimise the desing. Based on the contraints, the synthesiser can choose different flavours from the standard cell to implement the same logic while trying to satisfy the various design contraints. The contraints typically includes timing requirements, area restrictions and power limitations.
-     
+## Output Of The Synthesis Process
+    The output of the systhesis process is a optimised gate-level netlist mapped to the given target technology cells. 
 
 ## Why is it important .!?
     **TBD**
