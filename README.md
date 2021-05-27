@@ -73,8 +73,10 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
     Simulator works by continiously monitoring the inputs for changes. Upon a change in any one of the inputs, the outputs are re evaluated. The changes to the inputs and corresponding changes to the output can be logged in a file for later analysis.
   - **Inputs to the simulator** : 
     The simulator accepts two main inputs.
-      1. The Desing : This is usaully the behavioral description of the specs in some HDL language.
+      1. The Design : This is usaully the behavioral description of the specs in some HDL language.
       2. The Testbench : The testbench is a setup to apply stimulas or test vectors to the design to check its functionality and correctness.
+  - **iverilog Simulation Flow**
+    ![](/src/img/iverilog.png)
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
