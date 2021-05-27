@@ -76,8 +76,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       1. The Design : This is usaully the behavioral description of the specs in some HDL language.
       2. The Testbench : The testbench is a setup to apply stimulas or test vectors to the design to check its functionality and correctness.
   4. **iverilog Simulation Flow**
-
-    ![](/src/img/iverilog.png)
+     ![](/src/img/iverilog.png)
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
