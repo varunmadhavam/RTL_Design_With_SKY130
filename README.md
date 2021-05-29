@@ -7,8 +7,20 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
 # Table of Contents
 
 1. [Introduction](#introduction)
+  1. [What is logic synthesis](#what-is-logic-synthesis-)
+  2. [Synthesis Steps](#synthesis-steps)
+  3. [Inputs To The Synthesis Process](#inputs-to-the-synthesis-process)
+  4. [Output Of The Synthesis Process](#output-of-the-synthesis-process)
+  5. [Why is it important](#why-is-it-important-)
 2. [Day1 - Introduction to Verilog RTL Design and Synthesis](#day1---introduction-to-verilog-rtl-design-and-synthesis)
-3. [Day2]
+  1. [Setting Up the Lab](#setting-up-the-lab)
+  2. [Simulating the Designs with iverilog](#simulating-the-designs-with-iverilog)
+  3. [Synthesis with Yosys](#synthesis-with-yosys)
+3. [Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles](#day2---timing-libs-hierarchical-vs-flat-synthesis-and-efficient-flop-coding-styles)
+  1. [The standard cell library](#the-standard-cell-library)
+  2. [Hierarchical and Flat synthesis](#hierarchical-and-flat-synthesis)
+  3. [Glitches](#glitches)
+  4. [Flops with asyncrhonous reset/set](#flops-with-asyncrhonous-resetset)
 4. [Day3]
 5. [Day4]
 6. [Day5]
@@ -200,9 +212,11 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       Flipflops are storage elements. Their outputs only reflect the input on a clock edge. Between edges, the output is completly isolated from the inputs. So if we add flops between our combinational paths, we can prevent glitches from chaining up and causing unstable outputs. They act as barriers at the input of the combinational circuit, giving its output time to settle after a change in the inputs.
 5. ## Flops inital state.
       Its important to control the inital states of the flops. Since the output of the flops are input to a combinational circuit, if the intial state is unknow, this may result in the combinational logic evalauting to some grabage value. To avoid this we should be able to control the intial values of the flop. For the designer, usually two ways are availble. One is to reset the clock, which would set its output to 0 and the other is to set the flop which would set its output to 1. Both can be done asynchronously or sychronous with respect to the clock.
-6. ## Flops with asyncrhonous reset/set.
-      Asynchronous means, the clock is set/reset as soon as the set/reset line is asserted. It doesnot wait for the clock.
+6. ## Flops with asynchronous reset/set.
+      Asynchronous means, the output of the flop is set/reset as soon as the set/reset line is asserted. It doesnot wait for the clock.
       ![](/src/img/async.png)
+7. ## Flops wiht synchronous reset/set.
+
 
 
 
