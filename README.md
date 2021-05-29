@@ -94,7 +94,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          gtkwave tb_good_mux.vcd
          ```
       4. To view the signal on the wave window click and drag them to the signal column.
-         ![](/src/gif/iverilog4.gif)
+         ![](/src/gif/iverilog44.gif)
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
