@@ -78,10 +78,15 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
     4. **iverilog Simulation Flow**
 
      ![](/src/img/iverilogn.png)
-      1. *** Run iverilog with the desing verilog file and the testbench as inputs. This will create an executable named a.out.
+      1. #### Run iverilog with the design verilog file and the testbench as inputs. This will create an executable named a.out.
          ![](/src/img/iverilog1.png)
          ```
          iverilog good_mux.v tb_good_mux.v
+         ```
+      2. #### Execute the file a.out. This will generate the value change dump (.vcd) file.
+         ![](/src/img/iverilog2.png)
+         ```
+         ./a.out
          ```
 
 # FAQs
