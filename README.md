@@ -78,6 +78,11 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
     4. **iverilog Simulation Flow**
 
      ![](/src/img/iverilogn.png)
+      1. *** Run iverilog with the desing verilog file and the testbench as inputs. This will create an executable named a.out.
+         ![](/src/img/iverilog1.png)
+         ```
+         iverilog good_mux.v tb_good_mux.v
+         ```
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
