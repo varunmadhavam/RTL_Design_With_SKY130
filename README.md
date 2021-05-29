@@ -112,6 +112,11 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
         ```
         yosys
         ```
+        2. load the sky130 standard library.
+        ![](/src/img/yosys2.png)
+        ```
+        read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+        ```
     
 
 
