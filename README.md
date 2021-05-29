@@ -147,7 +147,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
            ![](/src/img/yosys9.png)
 
 # Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles 
-1. ### The standard cell library
+1. ## The standard cell library
    1. A standrard cell library is a collection of charactrized logic gates that can be used to implement digital circuits. This is usaully part of set of file created by the foundary called the PDK(Process Develpment Kit). The designers use the PDK to design, simulate, draw and verify the design before handing the design back to the foundry to produce chips.\
    The standard libray contains.
       1. Behavioral Views\
@@ -175,10 +175,10 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       ![](/src/img/lib1.png)
       ![](/src/img/lib2.png)
       ![](/src/img/lib3.png)
-2. Hierarchical and Flat synthesis
+2. ## Hierarchical and Flat synthesis
    - When you do synth -top 'topmodulename' in yosys, it does an hierachical synthesis. ie the different hierachies between modules are preserved.
      ![](/src/img/hier1.png)
-   - The yosys command flatten can be used to flatten the hierachy and produce a single module. In the resulting netlist the heirachies will not be preserved.
+   - The yosys command flatten can be used to "flatten" the hierachy and produce a single module. In the resulting netlist the heirachies will not be preserved.
      ![](/src/img/hier2.png)
      ```
      flatten
