@@ -184,13 +184,21 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
      flatten
      ```
    - ### submodule Level Synthesis
-     Why submodule level synthesis.!?\
+     Why submodule level synthesis.!?
      - case 1 :  **Top module with multiple instantioations of the same component.**\
        In this case, the submodule can be just synthesised once and then later stiched together in the top module.
      - case 2 : **High design complexity.**\
        Due to the size of the design, the synthesis tool is not to properly operate. In such cases we can deploy a divide and conquer strategy wherein the design can be synthesied at a submodule level and then latter stiched together in the top module.
      - To synthesize a sub module use the command "synth -top" with the submodule name instead of the the top module name.
        ![](/src/img/hier3.png)
+3. ## Glitches
+      Consider any combinational circuit. Each gate in it hass an associated delay. Any change in its input take some finite amount of time to propogate to its output. A combinational cirucit with gates whose delays are unbalanced might result in unwanted transitions in the outputs for changes in the input. These are called glitches
+      For example consider the logic a + a'. From boolean algebra we know that the output of this should always be 0. But in reality this may not be the case. See the timing diagram below.
+      ![](/src/img/glitch.png)
+      We can clearly see that, though our output is supposed to be always at one, due to the imbalance in delays, it goes low for some time. These can be bad for circuit operation. Further more more and more combinational circuits are cascaded together, we might reach a situation where the output never settels.
+4. ## Avoiding glitiches. FlipFlops.
+      Flipflops are storage elements. Their outputs only reflect the input on a clock edge. Between edges, the output is completly isolated from the inputs. So if we add flops between our combinational paths, we can prevent glitched from chaining up and causing unstable outputs. They act as barriers at the input of the combinational circuit, giving its output time to settle after a change in the inputs.
+      
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
