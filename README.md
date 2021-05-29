@@ -164,6 +164,16 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 3. ### Library naming convention
    The SkyWater Foundry Provides multiple Standard Cell Libraries. For this workshop we will be using the "sky130_fd_sc_hd". The sky130_fd_sc_hd library is designed for high density. This library enables higher routed gated density, lower dynamic power consumption, and comparable timing and leakage power. As a trade-off it has lower drive strength. Specifically this workshop uses the library "sky130_fd_sc_hd__tt_025C_1v80".
    ![](/src/img/libname.png)
+4. ### The .lib(liberty) File contents
+   The timing data of standdard cells is provided in the liberty format. Every .lib file will provide timing/power/noise/area information for a single corner ie process,voltage, temperature etc.
+   1. Library\
+      general information common to all cells in the library.
+   2. Cell\
+      specific information about each standard cell.
+   3. Pin\
+      Timing, power, capacitance, leakage functionality etc characteristics for each pin in each cell.
+
+   
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
@@ -179,3 +189,5 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 
 # References
 1. https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/
+2. https://www.eng.biu.ac.il/temanad/files/2017/02/Lecture-4-Standard-Cell-Libraries.pdf
+3. https://skywater-pdk.readthedocs.io/en/latest/
