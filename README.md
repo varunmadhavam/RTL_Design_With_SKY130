@@ -192,13 +192,19 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
      - To synthesize a sub module use the command "synth -top" with the submodule name instead of the the top module name.
        ![](/src/img/hier3.png)
 3. ## Glitches
-      Consider any combinational circuit. Each gate in it hass an associated delay. Any change in its input take some finite amount of time to propogate to its output. A combinational cirucit with gates whose delays are unbalanced might result in unwanted transitions in the outputs for changes in the input. These are called glitches
-      For example consider the logic a + a'. From boolean algebra we know that the output of this should always be 0. But in reality this may not be the case. See the timing diagram below.
+      Consider any combinational circuit. Each gate in it has an associated delay. Any change in its input take some finite amount of time to propogate to its output. A combinational cirucit with gates whose delays are unbalanced might result in unwanted transitions in the outputs for changes in the input. These are called glitches
+      For example consider the logic a + a'. From boolean algebra we know that the output of this should always be 1. But in reality this may not be the case. See the timing diagram below.
       ![](/src/img/glitch.png)
-      We can clearly see that, though our output is supposed to be always at one, due to the imbalance in delays, it goes low for some time. These can be bad for circuit operation. Further more more and more combinational circuits are cascaded together, we might reach a situation where the output never settels.
-4. ## Avoiding glitiches. FlipFlops.
-      Flipflops are storage elements. Their outputs only reflect the input on a clock edge. Between edges, the output is completly isolated from the inputs. So if we add flops between our combinational paths, we can prevent glitched from chaining up and causing unstable outputs. They act as barriers at the input of the combinational circuit, giving its output time to settle after a change in the inputs.
-      
+      We can clearly see that, though our output is supposed to be always at one, due to the imbalance in delays, it goes low for some time. These can be bad for circuit operation. Further, if more and more combinational circuits are cascaded together, we might reach a situation where the output never settles.
+4. ## Avoiding glitiches = FlipFlops.
+      Flipflops are storage elements. Their outputs only reflect the input on a clock edge. Between edges, the output is completly isolated from the inputs. So if we add flops between our combinational paths, we can prevent glitches from chaining up and causing unstable outputs. They act as barriers at the input of the combinational circuit, giving its output time to settle after a change in the inputs.
+5. ## Flops inital state.
+      Its important to control the inital states of the flops. Since the output of the flops are input to a combinational circuit, if the intial state is unknow, this may result in the combinational logic evalauting to some grabage value. To avoid this we should be able to control the intial values of the flop. For the designer, usually two ways are availble. One is to reset the clock, which would set its output to 0 and the other is to set the flop which would set its output to 1. Both can be done asynchronously or sychronous with respect to the clock.
+6. ## Flops with asyncrhonous reset/set.
+      Asynchronous means, the clock is set/reset as soon as the set/reset line is asserted. It doesnot wait for the clock.
+      ![](/src/img/async.png)
+
+
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
