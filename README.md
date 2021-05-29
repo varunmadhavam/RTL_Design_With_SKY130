@@ -175,6 +175,17 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       ![](/src/img/lib1.png)
       ![](/src/img/lib2.png)
       ![](/src/img/lib3.png)
+2. Hierarchical and Flat synthesis
+   - When you do synth -top 'topmodulename' in yosys, it does an hierachical synthesis. ie the different hierachies between modules are preserved.
+     ![](/src/img/hier1.png)
+   - The yosys command flatten can be used to flatten the hierachy and produce a single module. In the resulting netlist the heirachies will not be preserved.
+     ![](/src/img/hier2.png)
+     ```
+     flatten
+     ```
+   - 
+     
+
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
@@ -191,3 +202,4 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 1. https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/
 2. https://www.eng.biu.ac.il/temanad/files/2017/02/Lecture-4-Standard-Cell-Libraries.pdf
 3. https://skywater-pdk.readthedocs.io/en/latest/
+4. http://www.clifford.at/yosys/
