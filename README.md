@@ -205,7 +205,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
        ![](/src/img/hier3.png)
 3. ## Glitches
       Consider any combinational circuit. Each gate in it has an associated delay. Any change in its input take some finite amount of time to propogate to its output. A combinational cirucit with gates whose delays are unbalanced might result in unwanted transitions in the outputs for changes in the input. These are called glitches
-      For example consider the logic a + a'. From boolean algebra we know that the output of this should always be 1. But in reality this may not be the case. See the timing diagram below.
+      For example consider the logic a + a'. From boolean algebra we know that the output of this should always be 1. But, in reality this may not be the case. See the timing diagram below.
       ![](/src/img/glitch.png)
       We can clearly see that, though our output is supposed to be always at one, due to the imbalance in delays, it goes low for some time. These can be bad for circuit operation. Further, if more and more combinational circuits are cascaded together, we might reach a situation where the output never settles.
 4. ## Avoiding glitiches = FlipFlops.
