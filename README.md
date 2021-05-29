@@ -148,7 +148,23 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 
 # Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles 
 1. ### The standard cell library
-  
+   A standrard cell library is a collection of charactrized logic gates that can be used to implement digital circuits. This is usaully part of set of file created by the foundary called the PDK(Process Develpment Kit). The designers use the PDK to design, simulate, draw and verify the design before handing the design back to the foundry to produce chips.\
+   The standard libray contains\
+   1. Behavioral Views\
+      HDL Descriptions of the cells that can be used for simulation and logic equivalence checking.
+   2. Physical View\
+      Contains layout of cells(GDSII) and abstract of cells(LEF)
+   3. Transistor Level View\
+      Can be used for spice simulations.
+   4. Timing/Power
+      Liberty files with charactrization of timing and power.
+   etc...
+2. ### The SkyWater Open Source PDK
+   The SkyWater Open Source PDK is a collaboration between Google and SkyWater Technology Foundry to provide a fully open source Process Design Kit and related resources, which can be used to create manufacturable designs at SkyWater’s facility. In this workshop we will be targetting this foundary and hence will be using the library file from this pdk for synthesis.
+3. ### Library naming convention
+   The SkyWater Foundry Provides multiple Standard Cell Libraries. For this workshop we will be using the "sky130_fd_sc_hd". The sky130_fd_sc_hd library is designed for high density. This library enables higher routed gated density, lower dynamic power consumption, and comparable timing and leakage power. As a trade-off it has lower drive strength. Specifically this workshop uses the library "sky130_fd_sc_hd__tt_025C_1v80".
+   ![](/src/img/libname.png)
+
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
