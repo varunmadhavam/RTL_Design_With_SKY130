@@ -98,8 +98,11 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       5. To zoom in, click on the area that you want to zoom in and then click on the [+] button.
          ![](/src/gif/iverilog5.gif)
 3. ### Synthesis with Yosys
-    1. **What is yosys.!?**
-       Yosys is free software framework for RTL synthesis licensed under the ISC license. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains
+    1. **What is yosys.!?** : 
+       Yosys is free software framework for RTL synthesis licensed under the ISC license. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains. Yosys  reads a design  from the verilog file, synthesizes it to a gate-level netlist using the cell library in the given Liberty file  and writes the synthesized results as Verilog netlist to output.
+    2. **The Standard Library File** : 
+       The standard library file is a collection of logical modules. It can include basic gates like not, and , or etc and macrocells like flops and muxes. Further many flavours of the same gate might be presnet like slow, medium, fast as well as multiple input options like 2 inputs , 3 inputs etc..
+
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
