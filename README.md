@@ -95,6 +95,8 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          ```
       4. To view the signal on the wave window click and drag them to the signal column.
          ![](/src/gif/iverilog44.gif)
+      5. To zoom in, click on the area that you want to zoom in and then click on the [+] button.
+         ![](/src/gif/iverilog5.gif)
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
