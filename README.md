@@ -117,7 +117,24 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
            ```
            read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
            ```
-    
+        3. Read the design files
+           ![](/src/img/yosys3.png)
+           ```
+           read_verilog good_mux.v
+           ```
+        4. Synthesize the top level module
+           ![](/src/img/yosys4.png)
+           ```
+           synth -top good_mux
+           ```
+           ![](/src/img/yosys5.png)
+        
+        5. Map to the standard library
+           ![](/src/img/yosys6.png)
+           ```
+           abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+           ```
+           ![](/src/img/yosys7.png)
 
 
 # FAQs
