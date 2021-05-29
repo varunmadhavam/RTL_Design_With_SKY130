@@ -183,8 +183,14 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
      ```
      flatten
      ```
-   - 
-     
+   - ### submodule Level Synthesis
+     Why submodule level synthesis.!?\
+     - case 1 :  Top module with multiple instantioations of the same component.\
+       In this case, the submodule can be just synthesised once and then later stiched together in the top module.
+     - case 2 : High design complexity.\
+       Due to the size of the design, the synthesis tool is not to properly operate. In such cases we can deploy a divide and conquer strategy wherein the design can be synthesied at a submodule level and then latter stiched together in the top module.
+     - To synthesize a sub module use the command "synth -top" with the submodule name instead of the the top module name.
+       ![](/src/img/hier3.png)
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
