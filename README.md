@@ -159,22 +159,22 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       4. Timing/Power
          Liberty files with charactrization of timing and power.\
          etc...
-  2. ### The SkyWater Open Source PDK
-     The SkyWater Open Source PDK is a collaboration between Google and SkyWater Technology Foundry to provide a fully open source Process Design Kit and related resources, which can be used to create manufacturable designs at SkyWater’s facility. In this workshop we will be targetting this foundary and hence will be using the library file from this pdk for synthesis.
-  3. ### Library naming convention
-     The SkyWater Foundry Provides multiple Standard Cell Libraries. For this workshop we will be using the "sky130_fd_sc_hd". The sky130_fd_sc_hd library is designed for high density. This library enables higher routed gated density, lower dynamic power consumption, and comparable timing and leakage power. As a trade-off it has lower drive strength. Specifically this workshop uses the library "sky130_fd_sc_hd__tt_025C_1v80".
+   2. ### The SkyWater Open Source PDK
+      The SkyWater Open Source PDK is a collaboration between Google and SkyWater Technology Foundry to provide a fully open source Process Design Kit and related resources, which can be used to create manufacturable designs at SkyWater’s facility. In this workshop we will be targetting this foundary and hence will be using the library file from this pdk for synthesis.
+   3. ### Library naming convention
+      The SkyWater Foundry Provides multiple Standard Cell Libraries. For this workshop we will be using the "sky130_fd_sc_hd". The sky130_fd_sc_hd library is designed for high density. This library enables higher routed gated density, lower dynamic power consumption, and comparable timing and leakage power. As a trade-off it has lower drive strength. Specifically this workshop uses the library "sky130_fd_sc_hd__tt_025C_1v80".
      ![](/src/img/libname.png)
-  4. ### The .lib(liberty) File contents
-     The timing data of standard cells is provided in the liberty format. Every .lib file will provide timing, power, noise, area information for a single corner ie process,voltage, temperature etc.
-     1. Library\
-        general information common to all cells in the library.
-     2. Cell\
-        specific information about each standard cell.
-     3. Pin\
-        Timing, power, capacitance, leakage functionality etc characteristics for each pin in each cell.
-     ![](/src/img/lib1.png)
-     ![](/src/img/lib2.png)
-     ![](/src/img/lib3.png)
+   4. ### The .lib(liberty) File contents
+      The timing data of standard cells is provided in the liberty format. Every .lib file will provide timing, power, noise, area information for a single corner ie process,voltage, temperature etc.
+      1. Library\
+         general information common to all cells in the library.
+      2. Cell\
+         specific information about each standard cell.
+      3. Pin\
+         Timing, power, capacitance, leakage functionality etc characteristics for each pin in each cell.
+      ![](/src/img/lib1.png)
+      ![](/src/img/lib2.png)
+      ![](/src/img/lib3.png)
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
