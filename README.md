@@ -146,7 +146,9 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
            ```
            ![](/src/img/yosys9.png)
 
-
+# Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles 
+1. ### The standard cell library
+  
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
