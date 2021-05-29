@@ -149,7 +149,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 # Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles 
 1. ### The standard cell library
    A standrard cell library is a collection of charactrized logic gates that can be used to implement digital circuits. This is usaully part of set of file created by the foundary called the PDK(Process Develpment Kit). The designers use the PDK to design, simulate, draw and verify the design before handing the design back to the foundry to produce chips.\
-   The standard libray contains\
+   The standard libray contains.
    1. Behavioral Views\
       HDL Descriptions of the cells that can be used for simulation and logic equivalence checking.
    2. Physical View\
