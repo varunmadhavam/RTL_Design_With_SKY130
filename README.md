@@ -102,6 +102,9 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
        Yosys is free software framework for RTL synthesis licensed under the ISC license. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains. Yosys  reads a design  from the verilog file, synthesizes it to a gate-level netlist using the cell library in the given Liberty file  and writes the synthesized results as Verilog netlist to output.
     2. **The Standard Library File** : 
        The standard library file is a collection of logical modules. It can include basic gates like not, and , or etc and macrocells like flops and muxes. Further many flavours of the same gate might be presnet like slow, medium, fast as well as multiple input options like 2 inputs , 3 inputs etc..
+    3. **The need of different flavour of gates** : 
+       The combinational delay in the logic path between two flops determine the maximum frequency of operation. The delay should be such that the data produced by the source flop reaches the input of the destination flop Tsetup time before the capturing clock edge, to avoid setup violations. Slower the delay, faster we can operate the circuit without failing this condition. So are only fast gates sufficient..!?. Its seems that we have to ensure a minimum delay on the path too. This ensure thats the data launched by a flop is captured by the other flop in the next clock cycle. Cases where this conditions are not met are called hold violations.
+       So we need a mix of fast and slow gates for a proper working design.
 
 
 # FAQs
