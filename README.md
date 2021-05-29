@@ -174,6 +174,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       Timing, power, capacitance, leakage functionality etc characteristics for each pin in each cell.
    ![](/src/img/lib1.png)
    ![](/src/img/lib2.png)
+   ![](/src/img/lib3.png)
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
