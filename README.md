@@ -98,7 +98,8 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       5. To zoom in, click on the area that you want to zoom in and then click on the [+] button.
          ![](/src/gif/iverilog5.gif)
 3. ### Synthesis with Yosys
-    1. ** What is yosys.!?**
+    1. **What is yosys.!?**
+       Yosys is free software framework for RTL synthesis licensed under the ISC license. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
