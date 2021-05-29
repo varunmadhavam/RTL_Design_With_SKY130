@@ -108,7 +108,10 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
        The synthesizer selects the best cell from the standard library based on the inputs given to it called contraints. Contraints are the designers guide to the systnesis tool on what to optimise the desing for, like power, performance or area. For high performance, the tool might choose faster gates which would indeed result in high power and more area. If slower gates are used to minimise power, the performace of the desing will be impacted.
     5. **Yosys flow**
         1. start yosys.
-        ![](/src/img/yosys.png) 
+        ![](/src/img/yosys.png)
+        ```
+        yosys
+        ```
     
 
 
