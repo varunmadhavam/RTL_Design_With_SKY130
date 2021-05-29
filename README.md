@@ -7,20 +7,20 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
 # Table of Contents
 
 1. [Introduction](#introduction)
-  1. [What is logic synthesis](#what-is-logic-synthesis-)
-  2. [Synthesis Steps](#synthesis-steps)
-  3. [Inputs To The Synthesis Process](#inputs-to-the-synthesis-process)
-  4. [Output Of The Synthesis Process](#output-of-the-synthesis-process)
-  5. [Why is it important](#why-is-it-important-)
+   1. [What is logic synthesis](#what-is-logic-synthesis-)
+   2. [Synthesis Steps](#synthesis-steps)
+   3. [Inputs To The Synthesis Process](#inputs-to-the-synthesis-process)
+   4. [Output Of The Synthesis Process](#output-of-the-synthesis-process)
+   5. [Why is it important](#why-is-it-important-)
 2. [Day1 - Introduction to Verilog RTL Design and Synthesis](#day1---introduction-to-verilog-rtl-design-and-synthesis)
-  1. [Setting Up the Lab](#setting-up-the-lab)
-  2. [Simulating the Designs with iverilog](#simulating-the-designs-with-iverilog)
-  3. [Synthesis with Yosys](#synthesis-with-yosys)
+   1. [Setting Up the Lab](#setting-up-the-lab)
+   2. [Simulating the Designs with iverilog](#simulating-the-designs-with-iverilog)
+   3. [Synthesis with Yosys](#synthesis-with-yosys)
 3. [Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles](#day2---timing-libs-hierarchical-vs-flat-synthesis-and-efficient-flop-coding-styles)
-  1. [The standard cell library](#the-standard-cell-library)
-  2. [Hierarchical and Flat synthesis](#hierarchical-and-flat-synthesis)
-  3. [Glitches](#glitches)
-  4. [Flops with asyncrhonous reset/set](#flops-with-asyncrhonous-resetset)
+   1. [The standard cell library](#the-standard-cell-library)
+   2. [Hierarchical and Flat synthesis](#hierarchical-and-flat-synthesis)
+   3. [Glitches](#glitches)
+   4. [Flops with asyncrhonous reset/set](#flops-with-asyncrhonous-resetset)
 4. [Day3]
 5. [Day4]
 6. [Day5]
