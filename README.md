@@ -24,9 +24,9 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 ![](/src/img/synth.png)
 
 ## Synthesis Steps
-  1. **Translation**\ 
+  1. **Translation**\
      In this step, the input hdl files are processed and the constructs in them are interpreted as various logical structures. An example would be an if-else statement might infer a MUX and so on. Contraints and optimisation are not taken into account in this stage.
-  2. **Optimisation**\ 
+  2. **Optimisation**\
      In this step, various techniques are used to optimize and minimise the logic and remove redundant logic.
   3. **Mapping**\
      In this step, the desing is mapped to the desired target technology, based on the standard cell library. This implimentation also takes into account the design contraints given as inputs like power,area and timing and tries to satisfy them.
@@ -135,6 +135,16 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
            abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
            ```
            ![](/src/img/yosys7.png)
+        6. Two view the result as a graphich use the show command.
+           ```
+           show
+           ```
+           ![](/src/img/yosys8.png)
+        7. To write the result netlist to a file use the write_veriog command. This will output the netlist to a file in the current directory.
+           ```
+           write_verilog -noattr synth_result.v
+           ```
+           ![](/src/img/yosys9.png)
 
 
 # FAQs
