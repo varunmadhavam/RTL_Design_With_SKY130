@@ -78,16 +78,23 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
     4. **iverilog Simulation Flow**
 
      ![](/src/img/iverilogn.png)
-      1. #### Run iverilog with the design verilog file and the testbench as inputs. This will create an executable named a.out.
+      1. Run iverilog with the design verilog file and the testbench as inputs. This will create an executable named a.out.
          ![](/src/img/iverilog1.png)
          ```
          iverilog good_mux.v tb_good_mux.v
          ```
-      2. #### Execute the file a.out. This will generate the value change dump (.vcd) file.
+      2. Execute the file a.out. This will generate the value change dump (.vcd) file.
          ![](/src/img/iverilog2.png)
          ```
          ./a.out
          ```
+      3. Now run gtkwave with the vcd file as input to view the timing diagram.
+         ![](/src/img/iverilog3.png)
+         ```
+         gtkwave tb_good_mux.vcd
+         ```
+      4. To view the signal on the wave window click and drag them to the signal column.
+         ![](/src/gif/iverilog4.gif)
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
