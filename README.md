@@ -316,10 +316,16 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
         ```
         At first glance, we might be tempted to think that the design would contain 3 flops after synthesis. After all the counter is a 3 bit one. But think again. If we look closely, after a reset the value of count just toggles between 101 and 001(101+100). Output q is high when count = 101 or in this case simply when count[2] is 1. In other word q<=count[2]. So we just need one flop that toggles count[2] every clock cycle. Also the reset would be connected to the set of an async set flop. Lets see what yosys thinks.
         ![](/src/img/opt7.png)
-        We can cleary see that yosys has inferred just a single flop and the entire circuit is exactly like what we imagined it to be. Long story short, **any loigc that does not affect the primary outputs will be optimised out.**
+        We can clearly see that yosys has inferred just a single flop and the entire circuit is exactly like what we imagined it to be. Long story short, **any logic that does not affect the primary outputs will be optimized out.**
 
-   
-
+# Day4 - GLS, blocking vs non-blocking and Synthesis-Simulation mismatch.
+   1. ## Gate Level Simulation(GLS).
+      Gate level simulation is running the testbench againt the output netlist after synthesis. Originally the RTL code was the design under test. Netlist should be logically same as the rtl code with the same set of inputs and outputs. So we can use the same testbench used for rtl simulation in gate level simulation also.
+   2. ## Why GLS
+      GLS is required to check the correctness of the design after synthesis. Afterall the netlist is produced by an automated algorithm which can easily go wrong. So its imperative that we compare and test the resultant netlist against the original specification and make sure that its indeed the same. It can also be used to check whether the design meets the timing constraints. For this the gate level models of the standard cell libraries should be delay annotated.
+   3. ## GLS with iverilog
+      The GLS flow with iverilog is exactly same as that done during rtl simulation. Instead of using the rtl design as input, we will be using the netlist generated after synthesis as the input to iverilog. Additionally, we also have to pass the gate level veriog models of the standard cell library also to iverilog so that the tool knows the functionality of various gates that where mapped during synthesis.
+      ![](/src/img/gls1.png)
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
