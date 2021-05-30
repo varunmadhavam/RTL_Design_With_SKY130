@@ -240,20 +240,59 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
            = ac = a'c'
            = a xnor c
          ```
-         We can see that the long expression got minimised to a single xnor gate. 
+         We can see that the long expression got minimized to a single xnor gate. 
          
-     3.  **Optimisation with Yosys**\
-           In yosys  use the command otp_clean to optimise the design and remove unwanted components after running synth command.
+     3.  **Optimization with Yosys**\
+           In yosys  use the command otp_clean to optimize the design and remove unwanted components after running synth command.
            ```
            opt_clean -purge
            ```
            Yoysys synthesis does the same optimization for the above mentioned logic as seen in the below image.
            ![](/src/img/opt2.png)
-     4. **Optimising designs with multiple modules**\
-          For designs with multiple modules, after synthesis flatten the desing before running opt_clean -purge.
+     4. **Optimizing designs with multiple modules**\
+          For designs with multiple modules, after synthesis flatten the design before running opt_clean -purge.
           ![](/src/img/opt3.png)
 
-  2. ## Sequential Logic Optimisations**
+  2. ## Sequential Logic Optimizations
+     1. **Sequential constant propagation.**
+        To understand sequential constant propagation, check out the below verilog code.
+        ```
+         module dff_prop(clk,d,q,rst);
+            input clk,rst,d;
+            output reg q;
+
+            always @(posedge clk or negedge rst)
+               begin
+                  if(rst)
+                     q<=1'b0;
+                  else
+                     q<=1'b0;
+               end
+         endmodule
+         ```
+         If you look carefully, we can see that the output q would always be 0, irrespective of clk,d or reset. ie the flop can be optimised away. Lets see what yosys thinks.
+         ![](/src/img/opt4.png)
+         We can see that the entire circuit gets optimised to just a single wire. This is sequential constant propogation.
+     2. **Cases when Sequential constant propagation do not apply**
+         A constant connected to the input of a flop doesnot mean that we can always optimise it out. To understand better, see the code below.
+         ```
+         module dff_no_prop(clk,d,q,rst);
+            input clk,rst,d;
+            output reg q;
+
+            always @(posedge clk or negedge rst)
+               begin
+                  if(rst)
+                     q<=1'b1;
+                  else
+                     q<=1'b0;
+               end
+         endmodule
+         ```
+         
+
+
+   
 
 
 # FAQs
