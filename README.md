@@ -332,7 +332,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          ![](/src/img/gls1.png)
    2. ## Synthesis Simulations Mismatches.
       Situations may arise when the rtl simulation and the gate level simulation yields different results. This clearly indicates that the netlist after synthesis might not match with the requirements in hand. This is called synthesis simulation mismatch. In this section, we look into details some common reason for simulation synthesis mismatches.
-      1. **Missing signals in sensitivity list**
+      1. **Missing signals in sensitivity list**/
          This issue is mainly due to how the simulator works. An always block is executed only when any of the signals in its sensitivity list changes. So for any logic, all the value that are read by that block should be in the sensitivity list. If some of them is missed, then the block may not be run for changes to that signals. But since the logic written inside the block might itself be correct, the synthesis tool might infer the correct logic. This would then lead to a mismatch between the rtl and gls simulation. Lets understand it better with an example. Consider the below simple code snippet
          ```
          module and_vm(a,b,y);
@@ -343,10 +343,16 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          endmodule;
          ```
          Lets simulates this and see what happens.
-         ![](/src/img/gls1.png)
+         ![](/src/img/mismatch1.png)
          Clearly we are not getting an and gate. But what about gls after synthesis.?
-         ![](/src/img/gls1.png)
-         The timing is now that of an and gate. This is not because the synthesis tool in intelligent enough to figure out what the designers intend was, but due to the fact that the logic inside the block was correct to start with. In other word, you cannot mkke an and gate that only responds to 1 input, though such a thing can be written in verilog and simulated.
+         ![](/src/img/mismatch2.png)
+         The timing is now that of an and gate. This is not because the synthesis tool in intelligent enough to figure out what the designers intend was, but due to the fact that the logic inside the block was correct to start with. In other word, you cannot mkke an and gate that only responds to 1 input, though such a thing can be written in verilog and simulated.\
+         Also note the command used to do gls with iverilog.
+         ```
+         iverilog test_net.v tbvm.v ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v
+         ```
+         apart from the synthesized netlist(test_net.v) and the testbench(tbvm.v), it also has the verilog models of the sky130 standard library as inputs.
+
 
 
 # FAQs
