@@ -188,45 +188,50 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       ![](/src/img/lib2.png)
       ![](/src/img/lib3.png)
 2. ## Hierarchical and Flat synthesis
-   - When you do synth -top 'topmodulename' in yosys, it does an hierachical synthesis. ie the different hierachies between modules are preserved.
+   - When you do synth -top 'topmodulename' in yosys, it does an hierarchical synthesis. ie the different hierarchies between modules are preserved.
      ![](/src/img/hier1.png)
-   - The yosys command flatten can be used to "flatten" the hierachy and produce a single module. In the resulting netlist the heirachies will not be preserved.
+   - The yosys command flatten can be used to "flatten" the hierarchy and produce a single module. In the resulting netlist the hierarchies will not be preserved.
      ![](/src/img/hier2.png)
      ```
      flatten
      ```
    - ### submodule Level Synthesis
      Why submodule level synthesis.!?
-     - case 1 :  **Top module with multiple instantioations of the same component.**\
-       In this case, the submodule can be just synthesised once and then later stiched together in the top module.
+     - case 1 :  **Top module with multiple instantiations of the same component.**\
+       In this case, the submodule can be just synthesized once and then later stitched together in the top module.
      - case 2 : **High design complexity.**\
-       Due to the size of the design, the synthesis tool is not to properly operate. In such cases we can deploy a divide and conquer strategy wherein the design can be synthesied at a submodule level and then latter stiched together in the top module.
+       Due to the size of the design, the synthesis tool is not to properly operate. In such cases we can deploy a divide and conquer strategy wherein the design can be synthesized at a submodule level and then latter stitched together in the top module.
      - To synthesize a sub module use the command "synth -top" with the submodule name instead of the the top module name.
        ![](/src/img/hier3.png)
 3. ## Glitches
-      Consider any combinational circuit. Each gate in it has an associated delay. Any change in its input take some finite amount of time to propogate to its output. A combinational cirucit with gates whose delays are unbalanced might result in unwanted transitions in the outputs for changes in the input. These are called glitches
+      Consider any combinational circuit. Each gate in it has an associated delay. Any change in its input take some finite amount of time to propagate to its output. A combinational circuit with gates whose delays are unbalanced might result in unwanted transitions in the outputs for changes in the input. These are called glitches
       For example consider the logic a + a'. From boolean algebra we know that the output of this should always be 1. But, in reality this may not be the case. See the timing diagram below.
       ![](/src/img/glitch.png)
       We can clearly see that, though our output is supposed to be always at one, due to the imbalance in delays, it goes low for some time. These can be bad for circuit operation. Further, if more and more combinational circuits are cascaded together, we might reach a situation where the output never settles.
-4. ## Avoiding glitiches = FlipFlops.
-      Flipflops are storage elements. Their outputs only reflect the input on a clock edge. Between edges, the output is completly isolated from the inputs. So if we add flops between our combinational paths, we can prevent glitches from chaining up and causing unstable outputs. They act as barriers at the input of the combinational circuit, giving its output time to settle after a change in the inputs.
-5. ## Flops inital state.
-      Its important to control the inital states of the flops. Since the output of the flops are input to a combinational circuit, if the intial state is unknow, this may result in the combinational logic evalauting to some grabage value. To avoid this we should be able to control the intial values of the flop. For the designer, usually two ways are availble. One is to reset the clock, which would set its output to 0 and the other is to set the flop which would set its output to 1. Both can be done asynchronously or sychronous with respect to the clock.
+4. ## Avoiding glitches = FlipFlops.
+      Flipflops are storage elements. Their outputs only reflect the input on a clock edge. Between edges, the output is completely isolated from the inputs. So if we add flops between our combinational paths, we can prevent glitches from chaining up and causing unstable outputs. They act as barriers at the input of the combinational circuit, giving its output time to settle after a change in the inputs.
+5. ## Flops initial state.
+      Its important to control the initial states of the flops. Since the output of the flops are input to a combinational circuit, if the initial state is unknown, this may result in the combinational logic evaluating to some garbage value. To avoid this we should be able to control the initial values of the flop. For the designer, usually two ways are available. One is to reset the clock, which would set its output to 0 and the other is to set the flop which would set its output to 1. Both can be done asynchronously or synchronous with respect to the clock.
 6. ## Flops with asynchronous reset/set.
-      Asynchronous means, the output of the flop is set/reset as soon as the set/reset line is asserted. It doesnot wait for the clock.
+      Asynchronous means, the output of the flop is set/reset as soon as the set/reset line is asserted. It does not wait for the clock.
       ![](/src/img/async.png)
 7. ## Flops with synchronous reset/set.
       Synchronous means, the output not set/reset as soon as the reset/set pin is asserted. Instead, it waits for the next clock edge. Synchronous set/reset are always added to the datapath. ie they add extra logic to the input of the flop.
-      ![](/src/img/syncrst.png)
+      ![](/src/img/syncrst1.png)
 
-
+# Day3 - Combinational and Sequential optimizations.
+  The synthesis tool can adopt various techniques to the most optimised desing for power, area or performance. This section tries to cover some of those techniques.
+  1. ## Combinational Logic Optimisations.
+     Some of the common techniques used for optimising combinational logic are contant propogation and boolean logic minimisation. These are covered in detail below.
+     1.  **Constant Propagation**
+         In this technique, constant inputs to the logic are propagate to the output which results in a minimised expression implemneting the same logic. For example consider the case y=((ab)+c)' when b is tied to 0.
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
 
-2. yosys produces different implemnetations for the same circuit and standard libary file
-    - This would mostly be because of difference in the versions of yosys that you are running. Different versions might be optimised for different areas of optimisations like power, performance or area. Also later version might have improvments in algorithms that might help it to choose a better standard cell for the same design.
+2. yosys produces different implementations for the same circuit and standard library file
+    - This would mostly be because of difference in the versions of yosys that you are running. Different versions might be optimized for different areas of optimizations like power, performance or area. Also later version might have improvements in algorithms that might help it to choose a better standard cell for the same design.
     
 # Acknowledgements
 
