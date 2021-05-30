@@ -2,7 +2,7 @@
 
 ![](/src/img/Verilog-flyer.png)
 
-This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/) conducted by [VSD Corp. Pvt Ltd](https://www.vlsisystemdesign.com/) on RTL desing using verilog with SKY130 technology.
+This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/) conducted by [VSD Corp. Pvt Ltd](https://www.vlsisystemdesign.com/) on RTL design using verilog with SKY130 technology.
 
 # Table of Contents
 
@@ -20,12 +20,16 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
    1. [The standard cell library](#the-standard-cell-library)
    2. [Hierarchical and Flat synthesis](#hierarchical-and-flat-synthesis)
    3. [Glitches](#glitches)
-   4. [Flops with asyncrhonous reset/set](#flops-with-asyncrhonous-resetset)
-4. [Day3]
+   4. [Flops with asynchronous reset/set](#flops-with-asyncrhonous-resetset)
+   5. [Flops with synchronous reset/set](#flops-with-synchronous-resetset)
+4. [Day3 - Combinational and Sequential optimizations](#day3---combinational-and-sequential-optimizations)
+   1. [Combinational Logic Optimizations](#combinational-logic-optimisations)
+   2. [Sequential Logic Optimizations](#sequential-logic-optimizations)
+   3. [Sequential optimizations for unused outputs](#sequential-optimizations-for-unused-outputs)
 5. [Day4]
 6. [Day5]
 7. [FAQs](#faqs)
-8. [Acknowledgemnts](#acknowledgements)
+8. [Acknowledgements](#acknowledgements)
 9. [References](#references)
 
 
@@ -312,7 +316,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
         ```
         At first glance, we might be tempted to think that the design would contain 3 flops after synthesis. After all the counter is a 3 bit one. But think again. If we look closely, after a reset the value of count just toggles between 101 and 001(101+100). Output q is high when count = 101 or in this case simply when count[2] is 1. In other word q<=count[2]. So we just need one flop that toggles count[2] every clock cycle. Also the reset would be connected to the set of an async set flop. Lets see what yosys thinks.
         ![](/src/img/opt7.png)
-        We can cleary see that yosys has infered just a single flop and the entire circuit is exactly like what we imagined it to be. Long story short, **any loigc that does not affect the primary outputs will be optimised out.**
+        We can cleary see that yosys has inferred just a single flop and the entire circuit is exactly like what we imagined it to be. Long story short, **any loigc that does not affect the primary outputs will be optimised out.**
 
    
 
