@@ -227,12 +227,12 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          In this technique, constant inputs to the logic are propagate to the output which results in a minimized expression implementing the same logic. For example consider the case y=((ab)+c)' when b is tied to 0.
          ![](/src/img/opt1.png)
          We can see that the whole expression can be reduced to just an inverter. The input a does not affect the input as well.
-     2. **Boolean logic optimisation**
-         This is the good old techniques of minimising large boolean expression using laws of boolean algebra. Consider the below expression for an example.
+     2. **Boolean logic optimization**
+         This is the good old techniques of minimizing large boolean expression using laws of boolean algebra. Consider the below expression for an example.
          ```
          assign y=a?(b?c:(c?a:0)):(!c)
          ```
-         If we write the exapneded form, it would look something like below
+         If we write the expanded form, it would look something like below
          ```
          y = a(bc + b'(ca + c'0)) + a'c'
            = abc + ab'c + a'c'
@@ -240,6 +240,8 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
            = ac = a'c'
            = a xnor c
          ```
+         We can see that the long expression got minimised to a single xnor gate. Yoysys synhtesis does the same optimisation as seen the below image.
+         ![](/src/img/opt2.png)
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
