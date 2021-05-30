@@ -289,12 +289,28 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
                end
          endmodule
          ```
-         We might be compelled to think that we can optimise out the flop. The output seems like following the set pin. ie when set is asserted the output is high and when its is deasserted its low. In other words, q<=set. lets look at the timing diagram once.
+         We might be compelled to think that we can optimize out the flop. The output seems like following the set pin. ie when set is asserted the output is high and when its is de asserted its low. In other words, q<=set. lets look at the timing diagram once.
          ![](/src/img/opt5.png)
-         We can clearly see that the flop cannot be optimised out in this case.
+         We can clearly see that the flop cannot be optimized out in this case.
          ![](/src/img/opt6.png)
          Yosys also thinks the same and is retaining the flop after synthesis. The point is **not all constant input flops can be optimized out**.
 
+  3. ## Sequential optimizations for unused outputs
+        To understand this technique better, consider the below code.
+        ```
+        module counter_opt (input clk , input reset , output q);
+            reg [2:0] count;
+            assign q = (count == 3'b101);
+            always @(posedge clk ,posedge reset)
+               begin
+                  if(reset)
+                     count <= 3'b000);
+                  else
+                     count <= count + 3'h4;
+               end
+        endmodule
+        ```
+        At first glance, we might be tempted to think that the design would contain 3 flops after synthesis. After all the counter is a 3 bit one. But think again. If we look closely, after a reset the value of count just toggles between 101 and 001(101+100). Output q is high when count = 101 or in this case simply when count[2] is 1. In other word q<=count[2]. So we just need one flop that toggles count[2] every clock cycle. Also the reset would be connected to the set of an async set flop. Lets see what yosys thinks.
 
 
    
