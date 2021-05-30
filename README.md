@@ -11,7 +11,6 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
    2. [Synthesis Steps](#synthesis-steps)
    3. [Inputs To The Synthesis Process](#inputs-to-the-synthesis-process)
    4. [Output Of The Synthesis Process](#output-of-the-synthesis-process)
-   5. [Why is it important](#why-is-it-important-)
 2. [Day1 - Introduction to Verilog RTL Design and Synthesis](#day1---introduction-to-verilog-rtl-design-and-synthesis)
    1. [Setting Up the Lab](#setting-up-the-lab)
    2. [Simulating the Designs with iverilog](#simulating-the-designs-with-iverilog)
@@ -36,29 +35,26 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
 # Introduction
 
 ## What is logic synthesis .!?
-Logic sysnthesis is the process of translating your RTL Design, which is the behavioral representation of some specifications, usaully written in a HDL language like verilog, to an optimised gate level netlist based on a given set of design contraints and a standard cell library.
+Logic synthesis is the process of translating your RTL Design, which is the behavioral representation of some specifications, usually written in a HDL language like verilog, to an optimized gate level netlist based on a given set of design constraints and a standard cell library.
 ![](/src/img/synth.png)
 
 ## Synthesis Steps
   1. **Translation**\
-     In this step, the input hdl files are processed and the constructs in them are interpreted as various logical structures. An example would be an if-else statement might infer a MUX and so on. Contraints and optimisation are not taken into account in this stage.
-  2. **Optimisation**\
-     In this step, various techniques are used to optimize and minimise the logic and remove redundant logic.
+     In this step, the input hdl files are processed and the constructs in them are interpreted as various logical structures. An example would be an if-else statement might infer a MUX and so on. Constraints and optimization are not taken into account in this stage.
+  2. **Optimization**\
+     In this step, various techniques are used to optimize and minimize the logic and remove redundant logic.
   3. **Mapping**\
-     In this step, the desing is mapped to the desired target technology, based on the standard cell library. This implimentation also takes into account the design contraints given as inputs like power,area and timing and tries to satisfy them.
+     In this step, the design is mapped to the desired target technology, based on the standard cell library. This implementation also takes into account the design constraints given as inputs like power,area and timing and tries to satisfy them.
 
 ## Inputs To The Synthesis Process
   1. **RTL Description**\
      These are your HDL source files which contains a behavioral description of the specifications of the design.
   2. **The Standard Cell Library**\
-     The library file contains a collection of cells that are proivded by the foundary. These includes basic logic gates like inverters, and gates, or gates etc as well as macrocells like multiplexers, flip flops etc. Each cell has an associated description which contains detailed  information regarding its functionality, timing , power and area in a format which is readable by the synthesis tool.
-  3. **Contraints**\
-     These contains guidelines to the synthesiser on how to optimise the desing. Based on the contraints, the synthesiser can choose different flavours from the standard cell to implement the same logic while trying to satisfy the various design contraints. The contraints typically includes timing requirements, area restrictions and power limitations.
+     The library file contains a collection of cells that are provided by the foundry. These includes basic logic gates like inverters, and gates, or gates etc as well as macrocells like multiplexers, flip flops etc. Each cell has an associated description which contains detailed  information regarding its functionality, timing , power and area in a format which is readable by the synthesis tool.
+  3. **Constraints**\
+     These contains guidelines to the synthesizer on how to optimize the design. Based on the constraints, the synthesizer can choose different flavors from the standard cell to implement the same logic while trying to satisfy the various design constraints. The constraints typically includes timing requirements, area restrictions and power limitations.
 ## Output Of The Synthesis Process
-  1. The output of the systhesis process is a optimised gate-level netlist mapped to the given target technology cells. 
-
-## Why is it important .!?
-  **TBD**
+  1. The output of the synthesis process is a optimized gate-level netlist mapped to the given target technology cells. 
 
 # Day1 - Introduction to Verilog RTL Design and Synthesis
 1. ### Setting Up the Lab.
@@ -74,7 +70,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       git clone https://github.com/kunalg123/vsdflow.git
       git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
       ```
-    - Go to the newly created vsdflow directory and execute the command ./opensource_eda_tool_install.sh . This will begin the installation of the various tools required for this workshop.(**Note. The tools would have been alredy installed on the lab machines and this step is not necessary**)
+    - Go to the newly created vsdflow directory and execute the command ./opensource_eda_tool_install.sh . This will begin the installation of the various tools required for this workshop.(**Note. The tools would have been already installed on the lab machines and this step is not necessary**)
       ![](/src/img/vsdinstall1.png)
       ``` 
       cd /home/varun/VLSI/vsdflow
@@ -84,13 +80,13 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       ![](/src/img/ds.png)
 2. ### Simulating the Designs with iverilog
     1. **what is simulation !?**\
-    Simulation is the process of checking whether the desing is adhering to the given specs. The tool used for simulating the design is called a simulator.
+    Simulation is the process of checking whether the design is adhering to the given specs. The tool used for simulating the design is called a simulator.
     2. **How does a simulator work**\
-    Simulator works by continiously monitoring the inputs for changes. Upon a change in any one of the inputs, the outputs are re evaluated. The changes to the inputs and corresponding changes to the output can be logged in a file for later analysis.
+    Simulator works by continuously monitoring the inputs for changes. Upon a change in any one of the inputs, the outputs are re evaluated. The changes to the inputs and corresponding changes to the output can be logged in a file for later analysis.
     3. **Inputs to the simulator**\
     The simulator accepts two main inputs.
-        1. The Design : This is usaully the behavioral description of the specs in some HDL language.
-        2. The Testbench : The testbench is a setup to apply stimulas or test vectors to the design to check its functionality and correctness.
+        1. The Design : This is usually the behavioral description of the specs in some HDL language.
+        2. The Testbench : The testbench is a setup to apply stimulus or test vectors to the design to check its functionality and correctness.
     4. **iverilog Simulation Flow**
 
      ![](/src/img/iverilogn.png)
@@ -117,11 +113,11 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
     1. **What is yosys.!?**\
        Yosys is free software framework for RTL synthesis licensed under the ISC license. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains. Yosys  reads a design  from the verilog file, synthesizes it to a gate-level netlist using the cell library in the given Liberty file  and writes the synthesized results as Verilog netlist to output.
     2. **The Standard Library File**\
-       The standard library file is a collection of logical modules. It can include basic gates like not, and , or etc and macrocells like flops and muxes. Further many flavours of the same gate might be presnet like slow, medium, fast as well as multiple input options like 2 inputs , 3 inputs etc..
-    3. **Why different flavours of gates**\
+       The standard library file is a collection of logical modules. It can include basic gates like not, and , or etc and macrocells like flops and muxes. Further many flavors of the same gate might be present like slow, medium, fast as well as multiple input options like 2 inputs , 3 inputs etc..
+    3. **Why different flavors of gates**\
        The combinational delay in the logic path between two flops determine the maximum frequency of operation. The delay should be such that the data produced by the source flop reaches the input of the destination flop Tsetup time before the capturing clock edge, to avoid setup violations. Slower the delay, faster we can operate the circuit without failing this condition. So are only fast gates sufficient..!?. Its seems that we have to ensure a minimum delay on the path too. This ensure thats the data launched by a flop is captured by the other flop only in the next clock cycle and not the current cycle. Cases where this conditions are not met are called hold violations. So we need a mix of fast and slow gates for a proper working design.
     4. **Selection of cell**\
-       The synthesizer selects the best cell from the standard library based on the inputs given to it called contraints. Contraints are the designers guide to the systnesis tool on what to optimise the desing for, like power, performance or area. For high performance, the tool might choose faster gates which would indeed result in high power and more area. If slower gates are used to minimise power, the performace of the desing will be impacted.
+       The synthesizer selects the best cell from the standard library based on the inputs given to it called constraints. Constraints are the designers guide to the synthesis tool on what to optimize the design for, like power, performance or area. For high performance, the tool might choose faster gates which would indeed result in high power and more area. If slower gates are used to minimize power, the performance of the design will be impacted.
     5. **Yosys flow**
         1. start yosys.
            ![](/src/img/yosys1.png)
@@ -164,8 +160,8 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 
 # Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles 
 1. ## The standard cell library
-   1. A standrard cell library is a collection of charactrized logic gates that can be used to implement digital circuits. This is usaully part of set of file created by the foundary called the PDK(Process Develpment Kit). The designers use the PDK to design, simulate, draw and verify the design before handing the design back to the foundry to produce chips.\
-   The standard libray contains.
+   1. A standard cell library is a collection of characterized logic gates that can be used to implement digital circuits. This is usually part of set of file created by the foundry called the PDK(Process Development Kit). The designers use the PDK to design, simulate, draw and verify the design before handing the design back to the foundry to produce chips.\
+   The standard library contains.
       1. Behavioral Views\
          HDL Descriptions of the cells that can be used for simulation and logic equivalence checking.
       2. Physical View\
@@ -173,10 +169,10 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       3. Transistor Level View\
          Can be used for spice simulations.
       4. Timing/Power
-         Liberty files with charactrization of timing and power.\
+         Liberty files with characterization of timing and power.\
          etc...
    2. ### The SkyWater Open Source PDK
-      The SkyWater Open Source PDK is a collaboration between Google and SkyWater Technology Foundry to provide a fully open source Process Design Kit and related resources, which can be used to create manufacturable designs at SkyWater’s facility. In this workshop we will be targetting this foundary and hence will be using the library file from this pdk for synthesis.
+      The SkyWater Open Source PDK is a collaboration between Google and SkyWater Technology Foundry to provide a fully open source Process Design Kit and related resources, which can be used to create manufacturable designs at SkyWater’s facility. In this workshop we will be targeting this foundry and hence will be using the library file from this pdk for synthesis.
    3. ### Library naming convention
       The SkyWater Foundry Provides multiple Standard Cell Libraries. For this workshop we will be using the "sky130_fd_sc_hd". The sky130_fd_sc_hd library is designed for high density. This library enables higher routed gated density, lower dynamic power consumption, and comparable timing and leakage power. As a trade-off it has lower drive strength. Specifically this workshop uses the library "sky130_fd_sc_hd__tt_025C_1v80".
      ![](/src/img/libname.png)
@@ -224,9 +220,9 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       ![](/src/img/syncrst1.png)
 
 # Day3 - Combinational and Sequential optimizations.
-  The synthesis tool can adopt various techniques to the most optimised desing for power, area or performance. This section tries to cover some of those techniques.
-  1. ## Combinational Logic Optimisations.
-     Some of the common techniques used for optimising combinational logic are contant propogation and boolean logic minimisation. These are covered in detail below.
+  The synthesis tool can adopt various techniques to the most optimized design for power, area or performance. This section tries to cover some of those techniques.
+  1. ## Combinational Logic Optimizations.
+     Some of the common techniques used for optimizing combinational logic are constant propagation and boolean logic minimization. These are covered in detail below.
      1.  **Constant Propagation**\
          In this technique, constant inputs to the logic are propagate to the output which results in a minimized expression implementing the same logic. For example consider the case y=((ab)+c)' when b is tied to 0.
          ![](/src/img/opt1.png)
@@ -274,11 +270,11 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
                end
          endmodule
          ```
-         If you look carefully, we can see that the output q would always be 0, irrespective of clk,d or reset. ie the flop can be optimised away. Lets see what yosys thinks.
+         If you look carefully, we can see that the output q would always be 0, irrespective of clk,d or reset. ie the flop can be optimized away. Lets see what yosys thinks.
          ![](/src/img/opt4.png)
-         We can see that the entire circuit gets optimised to just a single wire. This is sequential constant propogation.
+         We can see that the entire circuit gets optimized to just a single wire. This is sequential constant propagation.
      2. **Cases when Sequential constant propagation do not apply**\
-         A constant connected to the input of a flop doesnot mean that we can always optimise it out. To understand better, see the code below.
+         A constant connected to the input of a flop does not mean that we can always optimize it out. To understand better, see the code below.
          ```
          module dff_no_prop(clk,d,q,set);
             input clk,rst,d;
@@ -346,7 +342,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          ![](/src/img/mismatch1.png)
          Clearly we are not getting an and gate. But what about gls after synthesis.?
          ![](/src/img/mismatch2.png)
-         The timing is now that of an and gate. This is not because the synthesis tool in intelligent enough to figure out what the designers intend was, but due to the fact that the logic inside the block was correct to start with. In other word, you cannot mkke an and gate that only responds to 1 input, though such a thing can be written in verilog and simulated.\
+         The timing is now that of an and gate. This is not because the synthesis tool in intelligent enough to figure out what the designers intend was, but due to the fact that the logic inside the block was correct to start with. In other word, you cannot makee an and gate that only responds to 1 input, though such a thing can be written in verilog and simulated.\
          Also note the command used to do gls with iverilog.
          ```
          iverilog test_net.v tbvm.v ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v
@@ -385,7 +381,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          end
       endmodule
       ```
-      We can see that the if statement is not complete. When i0 is 1 y is i1, but what about when i0 is not 1. Its not defined in the code clearly. So the synthesis tool will assume that if i0 is not 1 y should retain its previous value or in another words, a latch is inferred. This is bad because we did not intend a latch but a latch is inferred in the circuit. Moreover we were designing a combinational circuit, but due the bad coding style, have infered a sequential element in it.
+      We can see that the if statement is not complete. When i0 is 1 y is i1, but what about when i0 is not 1. Its not defined in the code clearly. So the synthesis tool will assume that if i0 is not 1 y should retain its previous value or in another words, a latch is inferred. This is bad because we did not intend a latch but a latch is inferred in the circuit. Moreover we were designing a combinational circuit, but due the bad coding style, have inferred a sequential element in it.
       ![](/src/img/mismatch5.png)
 
       if..else if chain can also be used to implement priority logic. Interesting things can happen if the chain is incomplete. Check the below code.
@@ -420,7 +416,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       ```
       The above also has an incomplete if statement so surely will infer latches. But in this case, its is actually intended. en is used to control whether the counter will count or not. If en is high count will increment on every clock. Otherwise since we have not specified the case, it would latch on to the current value of the count. This is just like a pause functionality.
    2. ## Case statement.
-      The case statements are usually infered as muxes. Like if statements, incomplete case statements can lead to inferred latches. An example is given below.
+      The case statements are usually inferred as muxes. Like if statements, incomplete case statements can lead to inferred latches. An example is given below.
       ```
       module incomp_case (input i0 , input i1 , input i2 , input [1:0] sel, output reg y);
          always @ (*)
@@ -432,7 +428,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
             end
       endmodule
       ```
-      The sel line is a 2 bit signal. so it has total 4 possibilities. But in the case we have added only two of them. What about when sel is one of the other two valuse. Like incomplete if , the sysnthesiser would infer that in such cases the value of y should retain its previous value and insert latches. Let us see the output of yosys.
+      The sel line is a 2 bit signal. so it has total 4 possibilities. But in the case we have added only two of them. What about when sel is one of the other two values. Like incomplete if , the synthesizer would infer that in such cases the value of y should retain its previous value and insert latches. Let us see the output of yosys.
       ![](/src/img/mismatch7.png)
       With case statements, an easy way to avoid such latches is to add a default. The default would match for all the conditions of the sel line which are not explicitly coded in the case. The modified code looks like below.
       ```
@@ -462,7 +458,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
             end
       endmodule
       ```
-      Let us synthesize the above code and see.
+      Here for the case 2'b01 only output x is defined and y is not defined. Let us synthesize the above code and see.
       ![](/src/img/mismatch8.png)
       clearly a latch is inferred and its on the path of output y.
 
