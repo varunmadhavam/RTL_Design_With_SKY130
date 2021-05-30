@@ -419,7 +419,52 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       endmodule
       ```
       The above also has an incomplete if statement so surely will infer latches. But in this case, its is actually intended. en is used to control whether the counter will count or not. If en is high count will increment on every clock. Otherwise since we have not specified the case, it would latch on to the current value of the count. This is just like a pause functionality.
-
+   2. ## Case statement.
+      The case statements are usually infered as muxes. Like if statements, incomplete case statements can lead to inferred latches. An example is given below.
+      ```
+      module incomp_case (input i0 , input i1 , input i2 , input [1:0] sel, output reg y);
+         always @ (*)
+            begin
+	            case(sel)
+		            2'b00 : y = i0;
+		            2'b01 : y = i1;
+	            endcase
+            end
+      endmodule
+      ```
+      The sel line is a 2 bit signal. so it has total 4 possibilities. But in the case we have added only two of them. What about when sel is one of the other two valuse. Like incomplete if , the sysnthesiser would infer that in such cases the value of y should retain its previous value and insert latches. Let us see the output of yosys.
+      ![](/src/img/mismatch7.png)
+      With case statements, an easy way to avoid such latches is to add a default. The default would match for all the conditions of the sel line which are not explicitly coded in the case. The modified code looks like below.
+      ```
+      module incomp_case (input i0 , input i1 , input i2 , input [1:0] sel, output reg y);
+         always @ (*)
+            begin
+	            case(sel)
+		            2'b00   : y = i0;
+		            2'b01   : y = i1;
+                  default : y = 1'b0;
+	            endcase
+            end
+      endmodule
+      ```
+      ![](/src/img/mismatch8.png)
+      No more latches.\
+      But, just adding the default clause might not be enough to avoid latches in certain cases. This is case where you are driving multiple outputs from each leg of the case. In such case, each leg of the case should have each of the output defined. if any one is missed, it will result in inferring a latch along the path for that particular output. Lets see with an example.
+      ```
+      module incomp_case (input i0 , input i1 , input i2 , input [1:0] sel, output reg x,y);
+         always @ (*)
+            begin
+	            case(sel)
+		            2'b00   : begin x = i0; y = i0; end
+		            2'b01   : x = i1;
+                  default : begin x =1'b0; y = 1'b0; end
+	            endcase
+            end
+      endmodule
+      ```
+      Let us synthesize the above code and see.
+      ![](/src/img/mismatch8.png)
+      clearly a latch is inferred and its on the path of output y.
 
 
 # FAQs
