@@ -387,7 +387,21 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       ```
       We can see that the if statement is not complete. When i0 is 1 y is i1, but what about when i0 is not 1. Its not defined in the code clearly. So the synthesis tool will assume that if i0 is not 1 y should retain its previous value or in another words, a latch is inferred. This is bad because we did not intend a latch but a latch is inferred in the circuit. Moreover we were designing a combinational circuit, but due the bad coding style, have infered a sequential element in it.
       ![](/src/img/mismatch5.png)
-      
+      Said that, there may be case where an inferred latch is intended. Take for example the below code for a counter.
+      ```
+      module counter (input clk , input reset, input en, output q[2:0]);
+         reg [2:0] count;
+         assign q = count;
+         always @(posedge clk, posedge reset)
+            begin
+               if(reset)
+                  count <= 3'b000;
+               else if(en)
+                  count <= count+1;
+               end
+      endmodule
+      ```
+      The above also has an incomplete if statement so surely will infer latches. But in this case, its is actually intended. en is used to control whether the counter will count or not. If en is high count will increment on every clock. Otherwise since we have not specified the case, it would latch on to the current value of the count. This is just like a pause functionality.
 
 
 
