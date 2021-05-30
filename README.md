@@ -242,16 +242,16 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          ```
          We can see that the long expression got minimised to a single xnor gate. 
          
-    3.  **Optimisation with Yosys**
-         In yosys  use the command otp_clean to optimise the design and remove unwanted components after running synth command.
-         ```
-         opt_clean -purge
-         ```
-         Yoysys synthesis does the same optimization for the above mentioned logic as seen in the below image.
-         ![](/src/img/opt2.png)
-    4. **Optimising designs with multiple modules**
-         For designs with multiple modules, after synthesis flatten the desing before running opt_clean -purge.
-         ![](/src/img/opt3.png)
+     3.  **Optimisation with Yosys**
+           In yosys  use the command otp_clean to optimise the design and remove unwanted components after running synth command.
+           ```
+           opt_clean -purge
+           ```
+           Yoysys synthesis does the same optimization for the above mentioned logic as seen in the below image.
+           ![](/src/img/opt2.png)
+     4. **Optimising designs with multiple modules**
+          For designs with multiple modules, after synthesis flatten the desing before running opt_clean -purge.
+          ![](/src/img/opt3.png)
 
   2. ## Sequential Logic Optimisations**
 
