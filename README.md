@@ -254,14 +254,14 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
           ![](/src/img/opt3.png)
 
   2. ## Sequential Logic Optimizations
-     1. **Sequential constant propagation.**
+     1. **Sequential constant propagation.**\
         To understand sequential constant propagation, check out the below verilog code.
         ```
          module dff_prop(clk,d,q,rst);
             input clk,rst,d;
             output reg q;
 
-            always @(posedge clk or negedge rst)
+            always @(posedge clk or posedge rst)
                begin
                   if(rst)
                      q<=1'b0;
@@ -273,14 +273,14 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          If you look carefully, we can see that the output q would always be 0, irrespective of clk,d or reset. ie the flop can be optimised away. Lets see what yosys thinks.
          ![](/src/img/opt4.png)
          We can see that the entire circuit gets optimised to just a single wire. This is sequential constant propogation.
-     2. **Cases when Sequential constant propagation do not apply**
+     2. **Cases when Sequential constant propagation do not apply**\
          A constant connected to the input of a flop doesnot mean that we can always optimise it out. To understand better, see the code below.
          ```
-         module dff_no_prop(clk,d,q,rst);
+         module dff_no_prop(clk,d,q,set);
             input clk,rst,d;
             output reg q;
 
-            always @(posedge clk or negedge rst)
+            always @(posedge clk or posedge set)
                begin
                   if(rst)
                      q<=1'b1;
@@ -289,7 +289,12 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
                end
          endmodule
          ```
-         
+         We might be compelled to think that we can optimise the flop. The output seems like following the set pin. ie when set is asserted the output is high and when its is deasserted its low. In other words, q<=set. lets look at the timing diagram once.
+         ![](/src/img/opt5.png)
+         We can clearly see that the flop cannot be optimised out in this case.
+         ![](/src/img/opt5.png)
+         Yosys also thinks the same and is retaining the flop after synthesis. The point is **not all constant input flops can be optimised out**.
+
 
 
    
