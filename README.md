@@ -224,7 +224,9 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
   1. ## Combinational Logic Optimisations.
      Some of the common techniques used for optimising combinational logic are contant propogation and boolean logic minimisation. These are covered in detail below.
      1.  **Constant Propagation**
-         In this technique, constant inputs to the logic are propagate to the output which results in a minimised expression implemneting the same logic. For example consider the case y=((ab)+c)' when b is tied to 0.
+         In this technique, constant inputs to the logic are propagate to the output which results in a minimized expression implementing the same logic. For example consider the case y=((ab)+c)' when b is tied to 0.
+         ![](/src/img/opt1.png)
+         We can see that the whole expression can be reduced to just an inverter. The input a does not affect the input as well.
 
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
