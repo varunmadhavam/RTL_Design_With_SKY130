@@ -223,11 +223,11 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
   The synthesis tool can adopt various techniques to the most optimised desing for power, area or performance. This section tries to cover some of those techniques.
   1. ## Combinational Logic Optimisations.
      Some of the common techniques used for optimising combinational logic are contant propogation and boolean logic minimisation. These are covered in detail below.
-     1.  **Constant Propagation**
+     1.  **Constant Propagation**\
          In this technique, constant inputs to the logic are propagate to the output which results in a minimized expression implementing the same logic. For example consider the case y=((ab)+c)' when b is tied to 0.
          ![](/src/img/opt1.png)
          We can see that the whole expression can be reduced to just an inverter. The input a does not affect the input as well.
-     2. **Boolean logic optimization**
+     2. **Boolean logic optimization**\
          This is the good old techniques of minimizing large boolean expression using laws of boolean algebra. Consider the below expression for an example.
          ```
          assign y=a?(b?c:(c?a:0)):(!c)
@@ -242,14 +242,14 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          ```
          We can see that the long expression got minimised to a single xnor gate. 
          
-     3.  **Optimisation with Yosys**
+     3.  **Optimisation with Yosys**\
            In yosys  use the command otp_clean to optimise the design and remove unwanted components after running synth command.
            ```
            opt_clean -purge
            ```
            Yoysys synthesis does the same optimization for the above mentioned logic as seen in the below image.
            ![](/src/img/opt2.png)
-     4. **Optimising designs with multiple modules**
+     4. **Optimising designs with multiple modules**\
           For designs with multiple modules, after synthesis flatten the desing before running opt_clean -purge.
           ![](/src/img/opt3.png)
 
