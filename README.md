@@ -332,7 +332,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          ![](/src/img/gls1.png)
    2. ## Synthesis Simulations Mismatches.
       Situations may arise when the rtl simulation and the gate level simulation yields different results. This clearly indicates that the netlist after synthesis might not match with the requirements in hand. This is called synthesis simulation mismatch. In this section, we look into details some common reason for simulation synthesis mismatches.
-      1. **Missing signals in sensitivity list**/
+      1. **Missing signals in sensitivity list**\
          This issue is mainly due to how the simulator works. An always block is executed only when any of the signals in its sensitivity list changes. So for any logic, all the value that are read by that block should be in the sensitivity list. If some of them is missed, then the block may not be run for changes to that signals. But since the logic written inside the block might itself be correct, the synthesis tool might infer the correct logic. This would then lead to a mismatch between the rtl and gls simulation. Lets understand it better with an example. Consider the below simple code snippet
          ```
          module and_vm(a,b,y);
@@ -352,7 +352,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          iverilog test_net.v tbvm.v ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v
          ```
          apart from the synthesized netlist(test_net.v) and the testbench(tbvm.v), it also has the verilog models of the sky130 standard library as inputs. Rest all is same as rtl simulation.
-      2. **Blocking and Nonblocking statements.**
+      2. **Blocking and Nonblocking statements.**\
          Both blocking and nonblocking statements are procedural statements that can only come inside an always( or initial ) block. The main difference between them is that blocking statements are evaluated in the order they are written while all non blocking statements execute concurrently. These difference can cause synthesis simulation mismatches due to the order in which the blocking statements are written. As an example see the below code.
          ```
          module(a,b,c,d);
@@ -371,10 +371,23 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          The output is clearly wrong. Why!?..Because since we are using blocking statements, the order matters. If you look closely, we are calculating d first and then x. ie d will be evaluated with the previous value of x. The simulation will look like there is a delay on x. To correct this we can reverse the order of the statements in the always block. Correct order or wrong order, both get synthesized to correct hardware.
          ![](/src/img/mismatch4.png)
          So this will again cause a simulation synthesis mismatch.\
-         ** As a rule of thumb always use blocking statements for combinational logic and non blocking for sequential logic **
+         **As a rule of thumb always use blocking statements for combinational logic and non blocking for sequential logic**
 
-
-
+# Day5 - If, case, for loop and for generate
+   1. ## IF statement.
+      If statement can infer a mux or priority logic based on how its coded. Also if written badly, if statements can infer latches. Main reason for inferred latches is incomplete if statements. Take a look at the code below.
+      ```
+      module incomp_if (input i0 , input i1 , input i2 , output reg y);
+         always @ (*)
+         begin
+	         if(i0)
+		         y <= i1;
+         end
+      endmodule
+      ```
+      We can see that the if statement is not complete. When i0 is 1 y is i1, but what about when i0 is not 1. Its not defined in the code clearly. So the synthesis tool will assume that if i0 is not 1 y should retain its previous value or in another words, a latch is inferred. This is bad because we did not intend a latch but a latch is inferred in the circuit. Moreover we were designing a combinational circuit, but due the bad coding style, have infered a sequential element in it.
+      ![](/src/img/mismatch5.png)
+      
 
 
 
