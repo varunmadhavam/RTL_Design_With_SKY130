@@ -387,6 +387,23 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
       ```
       We can see that the if statement is not complete. When i0 is 1 y is i1, but what about when i0 is not 1. Its not defined in the code clearly. So the synthesis tool will assume that if i0 is not 1 y should retain its previous value or in another words, a latch is inferred. This is bad because we did not intend a latch but a latch is inferred in the circuit. Moreover we were designing a combinational circuit, but due the bad coding style, have infered a sequential element in it.
       ![](/src/img/mismatch5.png)
+
+      if..else if chain can also be used to implement priority logic. Interesting things can happen if the chain is incomplete. Check the below code.
+      ```
+      module incomp_if2 (input i0 , input i1 , input i2 , input i3, output reg y);
+         always @ (*)
+            begin
+	            if(i0)
+		            y <= i1;
+	            else if (i2)
+		            y <= i3;
+
+            end
+      endmodule
+      ```
+      The if statements are clearly incomplete. Lets see how yosys synthesizes this code.
+      ![](/src/img/mismatch6.png)
+      clearly a latch has been inferred. The logic goes like this. If i0 is high y is i1, else i3. now if either of i0 or i2 is high the latch is enabled and correspondingly i1 or i3 is fed to output. if both i0 and i2 are low, output retains its last value.
       Said that, there may be case where an inferred latch is intended. Take for example the below code for a counter.
       ```
       module counter (input clk , input reset, input en, output q[2:0]);
