@@ -351,7 +351,30 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
          ```
          iverilog test_net.v tbvm.v ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v
          ```
-         apart from the synthesized netlist(test_net.v) and the testbench(tbvm.v), it also has the verilog models of the sky130 standard library as inputs.
+         apart from the synthesized netlist(test_net.v) and the testbench(tbvm.v), it also has the verilog models of the sky130 standard library as inputs. Rest all is same as rtl simulation.
+      2. **Blocking and Nonblocking statements.**
+         Both blocking and nonblocking statements are procedural statements that can only come inside an always( or initial ) block. The main difference between them is that blocking statements are evaluated in the order they are written while all non blocking statements execute concurrently. These difference can cause synthesis simulation mismatches due to the order in which the blocking statements are written. As an example see the below code.
+         ```
+         module(a,b,c,d);
+            input a,b,c;
+            output reg y;
+            reg x;
+            always @(*)
+               begin
+                  d=c&x;
+                  x=a|b;
+               end
+         endmodule
+         ```
+         We are trying to implement the logic (a|b)&c. Lets simulate and see the result.
+         ![](/src/img/mismatch3.png)
+         The output is clearly wrong. Why!?..Because since we are using blocking statements, the order matters. If you look closely, we are calculating d first and then x. ie d will be evaluated with the previous value of x. The simulation will look like there is a delay on x. To correct this we can reverse the order of the statements in the always block. Correct order or wrong order, both get synthesized to correct hardware.
+         ![](/src/img/mismatch4.png)
+         So this will again cause a simulation synthesis mismatch.\
+         ** As a rule of thumb always use blocking statements for combinational logic and non blocking for sequential logic **
+
+
+
 
 
 
