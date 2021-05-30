@@ -461,14 +461,45 @@ Logic synthesis is the process of translating your RTL Design, which is the beha
       Here for the case 2'b01 only output x is defined and y is not defined. Let us synthesize the above code and see.
       ![](/src/img/mismatch8.png)
       clearly a latch is inferred and its on the path of output y.
-
-
+   3. ## For loop
+      For loop are used inside procedural blocks. They are used to evaluate expressions. They are not for instantiating modules.
+      The following code uses for loop to generate a 4X1 mux.
+      ```
+      module mux_generate (input i0 , input i1, input i2 , input i3 , input [1:0] sel  , output reg y);
+         wire [3:0] i_int;
+         assign i_int = {i3,i2,i1,i0};
+         integer k;
+         always @ (*)
+            begin
+               for(k = 0; k < 4; k=k+1) begin
+	               if(k == sel)
+		               y = i_int[k];
+               end
+            end
+      endmodule
+      ```
+      The main advantage of such a coding style is scalability. To convert this code to generate 128X1 mux would just mean, changing the loop condition( and of course the inputs and select also should scale accordingly.).
+   4. ## For Generate
+      For Generate loops are used to multiple instantiations of modules. They are not to be used inside a procedural block. An example is shown below.
+      ```
+      module and_8(a,b,y);
+         input [7:0] a,b;
+         output [7:0] y;
+         genvar i;
+         generate
+            for(i=0;i<8;i=i+1)
+               and g(y[i],a[i],b[i]);
+         endgenerate
+      endmodule
+      ```
+      The above will instantiate 8 and gate and make connections accordingly. Much more scalable than writing all the individual instantiations separately. Yosys output is given below.
+      ![](/src/img/genloop.png)
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
 
 2. yosys produces different implementations for the same circuit and standard library file
-    - This would mostly be because of difference in the versions of yosys that you are running. Different versions might be optimized for different areas of optimizations like power, performance or area. Also later version might have improvements in algorithms that might help it to choose a better standard cell for the same design.
+    - This would mostly be because of difference in the versions of yosys that you are running. Different versions might be optimized for different areas of optimizations like power, performance or area. Also later version might have improvements in algorithms that might help it to choose a better standard cell for the same design. Same technique can be used to generte n bit ripple carry adders from full adders.
     
 # Acknowledgements
 
