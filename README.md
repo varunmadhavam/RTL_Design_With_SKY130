@@ -251,7 +251,7 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
            ![](/src/img/opt2.png)
      4. **Optimizing designs with multiple modules**\
           For designs with multiple modules, after synthesis flatten the design before running opt_clean -purge.
-          ![](/src/img/opt3.png)
+          ![](/src/img/opt31.png)
 
   2. ## Sequential Logic Optimizations
      1. **Sequential constant propagation.**\
@@ -289,11 +289,11 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
                end
          endmodule
          ```
-         We might be compelled to think that we can optimise the flop. The output seems like following the set pin. ie when set is asserted the output is high and when its is deasserted its low. In other words, q<=set. lets look at the timing diagram once.
+         We might be compelled to think that we can optimise out the flop. The output seems like following the set pin. ie when set is asserted the output is high and when its is deasserted its low. In other words, q<=set. lets look at the timing diagram once.
          ![](/src/img/opt5.png)
          We can clearly see that the flop cannot be optimised out in this case.
-         ![](/src/img/opt5.png)
-         Yosys also thinks the same and is retaining the flop after synthesis. The point is **not all constant input flops can be optimised out**.
+         ![](/src/img/opt6.png)
+         Yosys also thinks the same and is retaining the flop after synthesis. The point is **not all constant input flops can be optimized out**.
 
 
 
