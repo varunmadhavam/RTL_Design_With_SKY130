@@ -485,7 +485,7 @@ Logic synthesis is the process of translating your RTL Design, which is the beha
             end
       endmodule
       ```
-      The main advantage of such a coding style is scalability. To convert this code to generate 128X1 mux would just mean, changing the loop condition( and of course the inputs and select also should scale accordingly.).
+      The main advantage of such a coding style is scalability. To convert this code to generate 128X1 mux would just mean, changing the loop condition( and of course the inputs and select also should be scaled accordingly.).
    4. ## For Generate
       For Generate loops are used to multiple instantiations of modules. They are not to be used inside a procedural block. An example is shown below.
       ```
@@ -499,7 +499,7 @@ Logic synthesis is the process of translating your RTL Design, which is the beha
          endgenerate
       endmodule
       ```
-      The above will instantiate 8 and gate and make connections accordingly. Much more scalable than writing all the individual instantiations separately. Yosys output is given below.
+      The above will instantiate 8 and gates and make connections accordingly. Much more scalable than writing all the individual instantiations separately. Yosys output is given below.
       ![](/src/img/genloop.png)
 # FAQs
 1.  What is the significance of -lib while importing liberty file in yosys
