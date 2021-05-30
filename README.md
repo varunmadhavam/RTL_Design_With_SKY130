@@ -304,14 +304,15 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
             always @(posedge clk ,posedge reset)
                begin
                   if(reset)
-                     count <= 3'b000);
+                     count <= 3'b101);
                   else
                      count <= count + 3'h4;
                end
         endmodule
         ```
         At first glance, we might be tempted to think that the design would contain 3 flops after synthesis. After all the counter is a 3 bit one. But think again. If we look closely, after a reset the value of count just toggles between 101 and 001(101+100). Output q is high when count = 101 or in this case simply when count[2] is 1. In other word q<=count[2]. So we just need one flop that toggles count[2] every clock cycle. Also the reset would be connected to the set of an async set flop. Lets see what yosys thinks.
-
+        ![](/src/img/opt7.png)
+        We can cleary see that yosys has infered just a single flop and the entire circuit is exactly like what we imagined it to be. Long story short, **any loigc that does not affect the primary outputs will be optimised out.**
 
    
 
