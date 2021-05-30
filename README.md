@@ -25,8 +25,15 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
    1. [Combinational Logic Optimizations](#combinational-logic-optimisations)
    2. [Sequential Logic Optimizations](#sequential-logic-optimizations)
    3. [Sequential optimizations for unused outputs](#sequential-optimizations-for-unused-outputs)
-5. [Day4]
-6. [Day5]
+   4. [Some other optimization techniques](#some-other-optimization-techniques)
+5. [Day4 - GLS, blocking vs non-blocking and Synthesis-Simulation mismatch](#day4---gls-blocking-vs-non-blocking-and-synthesis-simulation-mismatch)
+   1. [Gate Level Simulation(GLS)](#gate-level-simulationgls)
+   2. [Synthesis Simulations Mismatches](#synthesis-simulations-mismatches)
+6. [Day5 - If, case, for loop and for generate](#day5---if-case-for-loop-and-for-generate)
+   1. [IF statement](#if-statement)
+   2. [Case statement](#case-statement)
+   3. [For loop](#for-loop)
+   4. [For Generate](#for-generate)
 7. [FAQs](#faqs)
 8. [Acknowledgements](#acknowledgements)
 9. [References](#references)
@@ -499,7 +506,7 @@ Logic synthesis is the process of translating your RTL Design, which is the beha
     -   the -lib option creates like a library/list of all the cells present in the .lib file with only IO ports and not the internal structure.
 
 2. yosys produces different implementations for the same circuit and standard library file
-    - This would mostly be because of difference in the versions of yosys that you are running. Different versions might be optimized for different areas of optimizations like power, performance or area. Also later version might have improvements in algorithms that might help it to choose a better standard cell for the same design. Same technique can be used to generte n bit ripple carry adders from full adders.
+    - This would mostly be because of difference in the versions of yosys that you are running. Different versions might be optimized for different areas of optimizations like power, performance or area. Also later version might have improvements in algorithms that might help it to choose a better standard cell for the same design. Same technique can be used to generate n bit ripple carry adders from full adders.
     
 # Acknowledgements
 
