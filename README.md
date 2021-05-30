@@ -215,8 +215,9 @@ Logic sysnthesis is the process of translating your RTL Design, which is the beh
 6. ## Flops with asynchronous reset/set.
       Asynchronous means, the output of the flop is set/reset as soon as the set/reset line is asserted. It doesnot wait for the clock.
       ![](/src/img/async.png)
-7. ## Flops wiht synchronous reset/set.
-
+7. ## Flops with synchronous reset/set.
+      Synchronous means, the output not set/reset as soon as the reset/set pin is asserted. Instead, it waits for the next clock edge. Synchronous set/reset are always added to the datapath. ie they add extra logic to the input of the flop.
+      ![](/src/img/syncrst.png)
 
 
 
